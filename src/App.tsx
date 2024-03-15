@@ -7,7 +7,8 @@ import { useTimer } from "react-timer-hook";
 
 import { config, projectId } from "./config";
 
-import { Time } from "./components/Timer";
+import Time from "./components/Timer";
+import Price from "./components/Price";
 
 const queryClient = new QueryClient();
 
@@ -37,7 +38,10 @@ function App() {
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
         <div className="dark:text-white text-black h-full p-12">
-          <Time minutes={minutes} seconds={seconds} />
+          <div className="flex flex-col gap-y-4">
+            <Price price={4000} />
+            <Time minutes={minutes} seconds={seconds} />
+          </div>
         </div>
       </QueryClientProvider>
     </WagmiProvider>

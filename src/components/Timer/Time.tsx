@@ -5,9 +5,9 @@ interface TimerProps {
 
 const Time = ({ minutes, seconds }: TimerProps) => {
   return (
-    <div className="flex flex-col items-center gap-y-4">
-      <p className="text-2xl">Time before the next update</p>
-      <p className="text-3xl">
+    <div className="flex justify-center gap-x-4">
+      <p className="text-sm">Time before the next update</p>
+      <p className="text-sm">
         <span>{minutes}</span>:<span>{seconds}</span>
       </p>
     </div>
