@@ -1,3 +1,5 @@
+import { Abi } from "viem";
+
 export const abi = [
   {
     type: "function",
@@ -37,6 +39,6 @@ export const abi = [
     payable: false,
     gas: null,
   },
-] as const;
+] as const satisfies Abi;
 
 export const address = "0x1406F88f2F9eBf96a497C9Af6beC839db392649A";

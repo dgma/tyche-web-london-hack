@@ -4,9 +4,7 @@ import { baseSepolia } from "wagmi/chains";
 export const config = createConfig({
   chains: [baseSepolia],
   transports: {
-    [baseSepolia.id]: http(
-      "https://base-sepolia.g.alchemy.com/v2/4j3BdtzbDguFtThAoQSXHuqQYkWy6Fqp",
-    ),
+    [baseSepolia.id]: http(),
   },
 });
 

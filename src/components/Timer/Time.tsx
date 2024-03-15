@@ -1,9 +1,32 @@
-interface TimerProps {
-  minutes: number;
-  seconds: number;
-}
+import { forwardRef, useImperativeHandle } from "react";
+import { useTimer } from "react-timer-hook";
 
-const Time = ({ minutes, seconds }: TimerProps) => {
+const startTime = new Date();
+
+export type TimerHandle = {
+  restartTimer: () => void;
+};
+
+const Time = forwardRef<TimerHandle>((_, ref) => {
+  const { seconds, minutes, restart } = useTimer({
+    expiryTimestamp: startTime,
+    onExpire: () => console.warn("onExpire called"),
+  });
+
+  useImperativeHandle(
+    ref,
+    () => {
+      return {
+        restartTimer: () => {
+          const startTime = new Date();
+          startTime.setMinutes(startTime.getMinutes() + 10);
+          restart(startTime);
+        },
+      };
+    },
+    [restart],
+  );
+
   return (
     <div className="flex justify-center gap-x-4">
       <p className="text-sm">Time before the next update</p>
@@ -12,6 +35,6 @@ const Time = ({ minutes, seconds }: TimerProps) => {
       </p>
     </div>
   );
-};
+});
 
 export default Time;
