@@ -1,0 +1,14 @@
+name: On-Push Quality Gate
+
+on:
+  push:
+    branches-ignore:
+      - "main"
+
+  workflow_dispatch:
+    
+jobs:
+  reuse_build_and_validate:
+    uses: "./.github/workflows/quality-gate.reusable.yml"
+    with:
+      save-artifacts: false
