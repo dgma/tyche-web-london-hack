@@ -36,7 +36,7 @@ function App() {
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
-        <div className="dark:text-white text-black">
+        <div className="dark:text-white text-black h-full p-12">
           <Time minutes={minutes} seconds={seconds} />
         </div>
       </QueryClientProvider>
