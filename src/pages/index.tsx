@@ -8,7 +8,7 @@ import * as OracleContract from "../contracts/Oracle";
 import Timer, { TimerHandle } from "../components/Timer";
 import Price from "../components/Price";
 
-const TIMER_VALUE_IN_MIN = 1;
+const TIMER_VALUE_IN_MIN = 10;
 
 const MainPage = () => {
   const prevIsFetchingRef = useRef(true);
