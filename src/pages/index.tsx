@@ -5,14 +5,16 @@ import { baseSepolia } from "viem/chains";
 
 import * as OracleContract from "../contracts/Oracle";
 
-import Time, { TimerHandle } from "../components/Timer";
+import Timer, { TimerHandle } from "../components/Timer";
 import Price from "../components/Price";
 
+const TIMER_VALUE_IN_MIN = 1;
+
 const MainPage = () => {
-  const prevStatusRef = useRef<string | null>(null);
+  const prevIsFetchingRef = useRef(true);
   const timerRef = useRef<TimerHandle>(null);
 
-  const { data, isPending, status } = useReadContracts({
+  const { data, isPending, isFetching } = useReadContracts({
     contracts: [
       {
         ...OracleContract,
@@ -25,14 +27,15 @@ const MainPage = () => {
         chainId: baseSepolia.id,
       },
     ],
+    query: { refetchInterval: TIMER_VALUE_IN_MIN * 60 * 1000 },
   });
 
   useEffect(() => {
-    if (prevStatusRef.current !== "success" && status === "success") {
+    if (prevIsFetchingRef.current && !isFetching) {
       timerRef.current?.restartTimer();
     }
-    prevStatusRef.current = status;
-  }, [status]);
+    prevIsFetchingRef.current = isFetching;
+  }, [isFetching]);
 
   return (
     <div className="flex flex-col gap-y-4">
@@ -42,7 +45,7 @@ const MainPage = () => {
           decimals={data?.[1]?.result}
           isPending={isPending}
         />
-        <Time ref={timerRef} />
+        <Timer ref={timerRef} timerValueInMin={TIMER_VALUE_IN_MIN} />
       </div>
     </div>
   );

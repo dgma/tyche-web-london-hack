@@ -1,2 +1,2 @@
-export { default } from "./Time";
-export type { TimerHandle } from "./Time";
+export { default } from "./Timer";
+export type { TimerHandle } from "./Timer";
