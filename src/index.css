@@ -7,3 +7,18 @@ body,
 #root {
   @apply h-full;
 }
+
+.tyche-bg {
+  background-image: url("tyche.jpeg");
+  background-repeat: no-repeat;
+  height: 100%;
+  background-position: center;
+}
+
+.price-container {
+  margin-top: 110px;
+  width: 200px;
+  background-color: rgba(33, 79, 102, 0.8);
+  border-radius: 50%;
+  height: 200px;
+}

@@ -19,8 +19,8 @@ const Price = ({ price, decimals, isPending = true }: PriceProps) => {
   }
 
   return (
-    <div className="flex flex-col items-center gap-y-2">
-      <p className="text-2xl">Current ETH/USD Price</p>
+    <div className="flex flex-col items-center">
+      <p className="text-2xl">ETH/USD Price</p>
       <p className="text-3xl">{children}</p>
     </div>
   );

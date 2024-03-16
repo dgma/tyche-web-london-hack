@@ -13,7 +13,7 @@ interface TimeProps {
 
 const Time = forwardRef<TimerHandle, TimeProps>(
   ({ timerValueInMin = 10 }, ref) => {
-    const { seconds, minutes, restart } = useTimer({
+    const { seconds, restart } = useTimer({
       expiryTimestamp: startTime,
       onExpire: () => console.warn("onExpire called"),
     });
@@ -25,6 +25,7 @@ const Time = forwardRef<TimerHandle, TimeProps>(
           restartTimer: () => {
             const startTime = new Date();
             startTime.setMinutes(startTime.getMinutes() + timerValueInMin);
+            startTime.setSeconds(startTime.getSeconds() + timerValueInMin * 60);
             restart(startTime);
           },
         };
@@ -33,10 +34,11 @@ const Time = forwardRef<TimerHandle, TimeProps>(
     );
 
     return (
-      <div className="flex justify-center gap-x-4">
-        <p className="text-sm">Time before the next update</p>
+      <div className="flex items-center">
+        <p className="text-sm">Next update in:</p>
         <p className="text-sm">
-          <span>{minutes}</span>:<span>{seconds}</span>
+          {/*<span>{minutes}</span>:*/}
+          <span>{seconds} seconds</span>
         </p>
       </div>
     );
