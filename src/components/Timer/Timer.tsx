@@ -29,7 +29,7 @@ const Time = forwardRef<TimerHandle, TimeProps>(
           },
         };
       },
-      [restart],
+      [restart, timerValueInMin],
     );
 
     return (

@@ -37,14 +37,13 @@ const MainPage = () => {
     prevIsFetchingRef.current = isFetching;
   }, [isFetching]);
 
+  const price: bigint | undefined = data?.[0]?.result as bigint | undefined;
+  const decimals: number | undefined = data?.[1]?.result as number | undefined;
+
   return (
     <div className="flex flex-col gap-y-4">
       <div>
-        <Price
-          price={data?.[0]?.result}
-          decimals={data?.[1]?.result}
-          isPending={isPending}
-        />
+        <Price price={price} decimals={decimals} isPending={isPending} />
         <Timer ref={timerRef} timerValueInMin={TIMER_VALUE_IN_MIN} />
       </div>
     </div>
