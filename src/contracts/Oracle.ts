@@ -178,4 +178,4 @@ export const abi = [
   },
 ] as const satisfies Abi;
 
-export const address = "0x4A04237FD080A6123f394de010EBd5651297c6F4";
+export const address = "0xbB40D036BCfb6cc705dD29f336Fd515b1b99c3fc";
