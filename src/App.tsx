@@ -11,7 +11,7 @@ function App() {
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
-        <div className="dark:text-white text-black h-full">
+        <div className="text-white h-full">
           <div className="flex flex-col" style={{ height: "100%" }}>
             <MainPage />
           </div>
